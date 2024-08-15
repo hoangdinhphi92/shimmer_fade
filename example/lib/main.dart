@@ -10,7 +10,6 @@ void main() {
   );
 }
 
-
 class ExampleUiLoadingAnimation extends StatefulWidget {
   const ExampleUiLoadingAnimation({
     super.key,
@@ -22,21 +21,16 @@ class ExampleUiLoadingAnimation extends StatefulWidget {
 }
 
 class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
-  bool _isLoading = true;
-
-  void _toggleLoading() {
-    setState(() {
-      _isLoading = !_isLoading;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: ShimmerFadeContainer(
+        fromColor: const Color(0x11F4F4F4),
+        toColor: const Color(0x33F4F4F4),
+        duration: const Duration(seconds: 3),
         child: ListView(
-          physics: _isLoading ? const NeverScrollableScrollPhysics() : null,
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             const SizedBox(height: 16),
             _buildTopRowList(),
@@ -47,33 +41,25 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toggleLoading,
-        child: Icon(
-          _isLoading ? Icons.hourglass_full : Icons.hourglass_bottom,
-        ),
-      ),
     );
   }
 
   Widget _buildTopRowList() {
-    return ShimmerFade(
-      child: SizedBox(
-        height: 72,
-        child: ListView(
-          physics: _isLoading ? const NeverScrollableScrollPhysics() : null,
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          children: [
-            const SizedBox(width: 16),
-            _buildTopRowItem(),
-            _buildTopRowItem(),
-            _buildTopRowItem(),
-            _buildTopRowItem(),
-            _buildTopRowItem(),
-            _buildTopRowItem(),
-          ],
-        ),
+    return SizedBox(
+      height: 72,
+      child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: [
+          const SizedBox(width: 16),
+          _buildTopRowItem(),
+          _buildTopRowItem(),
+          _buildTopRowItem(),
+          _buildTopRowItem(),
+          _buildTopRowItem(),
+          _buildTopRowItem(),
+        ],
       ),
     );
   }
@@ -83,10 +69,8 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
   }
 
   Widget _buildListItem() {
-    return ShimmerFade(
-      child: CardListItem(
-        isLoading: false,
-      ),
+    return const ShimmerFade(
+      child: CardListItem(),
     );
   }
 }
@@ -94,6 +78,7 @@ class _ExampleUiLoadingAnimationState extends State<ExampleUiLoadingAnimation> {
 //----------- List Items ---------
 class CircleListItem extends StatelessWidget {
   const CircleListItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -108,7 +93,7 @@ class CircleListItem extends StatelessWidget {
         child: ClipOval(
           child: Image.network(
             'https://docs.flutter.dev/cookbook'
-                '/img-files/effects/split-check/Avatar1.jpg',
+            '/img-files/effects/split-check/Avatar1.jpg',
             fit: BoxFit.cover,
           ),
         ),
@@ -120,10 +105,7 @@ class CircleListItem extends StatelessWidget {
 class CardListItem extends StatelessWidget {
   const CardListItem({
     super.key,
-    required this.isLoading,
   });
-
-  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -152,8 +134,7 @@ class CardListItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(
-            'https://docs.flutter.dev/cookbook'
-                '/img-files/effects/split-check/Food1.jpg',
+            'https://docs.flutter.dev/cookbook/img-files/effects/split-check/Food1.jpg',
             fit: BoxFit.cover,
           ),
         ),
@@ -162,37 +143,27 @@ class CardListItem extends StatelessWidget {
   }
 
   Widget _buildText() {
-    if (isLoading) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: double.infinity,
-            height: 24,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(16),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: double.infinity,
+          height: 24,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(16),
           ),
-          const SizedBox(height: 16),
-          Container(
-            width: 250,
-            height: 24,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(16),
-            ),
-          ),
-        ],
-      );
-    } else {
-      return const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        child: Text(
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do '
-              'eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         ),
-      );
-    }
+        const SizedBox(height: 16),
+        Container(
+          width: 250,
+          height: 24,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      ],
+    );
   }
 }
