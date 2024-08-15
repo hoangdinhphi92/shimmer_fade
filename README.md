@@ -2,7 +2,7 @@
 
 The `shimmer_fade` package provides an easy way to add a shimmer effect similar to what you see on Facebook or Netflix. It's super fast, lightweight, and easy to set up.
 
-<img src="https://github.com/hnvn/flutter_shimmer/blob/master/screenshots/loading_list.gif?raw=true"/>
+<img src="https://github.com/hoangdinhphi92/shimmer_fade/blob/main/screenshots/screenshot.gif?raw=true"/>
 
 ## How to Use
 
