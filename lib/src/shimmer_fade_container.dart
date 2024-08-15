@@ -32,8 +32,9 @@ class ShimmerFadeContainer extends StatefulWidget {
 class ShimmerFadeContainerState extends State<ShimmerFadeContainer>
     with SingleTickerProviderStateMixin {
   double get progress => _shimmerController.value;
-  
-  Color get maskColor => Color.lerp(widget.fromColor, widget.toColor, progress)!;
+
+  Color get maskColor =>
+      Color.lerp(widget.fromColor, widget.toColor, progress)!;
 
   Listenable get shimmerChanges => _shimmerChanges;
 
