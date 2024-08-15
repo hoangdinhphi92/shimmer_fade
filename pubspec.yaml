@@ -1,7 +1,9 @@
 name: shimmer_fade
-description: "A new Flutter project."
+description: "A package provides an easy way to add a shimmer effect similar to what you see on Facebook or Netflix. It's super fast, lightweight, and easy to set up."
 version: 0.0.1
-homepage:
+repository: https://github.com/hoangdinhphi92/shimmer_fade
+issue_tracker: https://github.com/hoangdinhphi92/shimmer_fade/issues
+homepage: https://github.com/hoangdinhphi92/shimmer_fade
 
 environment:
   sdk: ^3.5.0
