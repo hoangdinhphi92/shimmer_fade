@@ -64,7 +64,7 @@ class ShimmerFadeContainerState extends State<ShimmerFadeContainer>
   }
 
   void _onListenableChanged(bool hasListeners) {
-    if(!mounted) return;
+    if (!mounted) return;
 
     if (hasListeners) {
       _repeat();
